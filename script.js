@@ -53,6 +53,22 @@
       "contact.subtitle": "The fastest ways to reach me.",
       "contact.email": "Email",
       "footer.note": "Software Engineer · Brazil",
+      "mz.docTitle": "MultaZero — Gustavo Alves",
+      "mz.back": "← Featured work",
+      "mz.role": "Full Stack Engineer · Part-time Contractor · 2026",
+      "mz.lead":
+        "Intelligent fine and fleet management. A smart solution for capturing, managing, and paying infractions in real time — powered by AI.",
+      "mz.body1":
+        "MultaZero is an intelligent infraction-management system connected to traffic authorities across Brazil. It enables real-time fine workflows, driver attribution, discounted boleto issuance, and payments for IPVA, DPVAT/SPVAT, and licensing.",
+      "mz.body2":
+        "Founded in 2025 as a LogTech focused on cutting infraction costs, the platform is a Banco do Brasil accredited partner with its own documented API. I worked as a full-stack contractor on capture, workflows, payments, and AI-assisted operations — including the Banco do Brasil API integration for vehicle debt payments inside the product.",
+      "mz.shotsTitle": "Product",
+      "mz.shotsSub": "Dashboard overview and real-time infraction pipeline.",
+      "mz.shot1": "Overview — fleet metrics, drivers, and due fines",
+      "mz.shot2": "Pipeline — infractions from new to completed",
+      "mz.stackTitle": "Stack",
+      "mz.stackSub": "Technologies used to build MultaZero.",
+      "mz.bbApi": "Banco do Brasil API",
     },
     pt: {
       "nav.projects": "Projetos",
@@ -107,6 +123,22 @@
       "contact.subtitle": "Os caminhos mais rápidos para falar comigo.",
       "contact.email": "E-mail",
       "footer.note": "Engenheiro de Software · Brasil",
+      "mz.docTitle": "MultaZero — Gustavo Alves",
+      "mz.back": "← Trabalhos em destaque",
+      "mz.role": "Full Stack Engineer · Contractor part-time · 2026",
+      "mz.lead":
+        "Gestão de multas e frota, inteligente. Solução para captura, gestão e pagamento de infrações em tempo real, com inteligência artificial.",
+      "mz.body1":
+        "O MultaZero é um sistema inteligente de gestão de infrações, conectado a órgãos infratores do Brasil. Possibilita gestão em tempo real, indicação de condutores, emissão de boletos com descontos e pagamentos de IPVA, DPVAT/SPVAT e licenciamentos.",
+      "mz.body2":
+        "Fundado em 2025 como uma LogTech focada em reduzir custos com infrações, é parceiro credenciado do Banco do Brasil e atua com API própria documentada. Atuei como contractor full stack em captura, fluxos, pagamentos e operações com IA — incluindo a integração com a API do Banco do Brasil para pagamento de débitos veiculares no produto.",
+      "mz.shotsTitle": "Produto",
+      "mz.shotsSub": "Visão geral do dashboard e pipeline de infrações em tempo real.",
+      "mz.shot1": "Visão geral — métricas da frota, condutores e multas a vencer",
+      "mz.shot2": "Pipeline — infrações de nova até concluída",
+      "mz.stackTitle": "Stack",
+      "mz.stackSub": "Tecnologias usadas no MultaZero.",
+      "mz.bbApi": "API Banco do Brasil",
     },
   };
 
@@ -139,11 +171,16 @@
       if (dict[key]) el.textContent = dict[key];
     });
     html.lang = lang;
-    langLabel.textContent = lang.toUpperCase();
-    document.title =
-      lang === "pt"
-        ? "Gustavo Alves — Engenheiro de Software"
-        : "Gustavo Alves — Software Engineer";
+    if (langLabel) langLabel.textContent = lang.toUpperCase();
+    const titleKey = document.querySelector("title[data-i18n]")?.getAttribute("data-i18n");
+    if (titleKey && dict[titleKey]) {
+      document.title = dict[titleKey];
+    } else {
+      document.title =
+        lang === "pt"
+          ? "Gustavo Alves — Engenheiro de Software"
+          : "Gustavo Alves — Software Engineer";
+    }
   };
 
   const setLang = (lang) => {
@@ -158,14 +195,18 @@
     if (meta) meta.setAttribute("content", theme === "light" ? "#f7f7f5" : "#0a0a0a");
   };
 
-  langToggle.addEventListener("click", () => {
-    setLang(html.lang === "pt" ? "en" : "pt");
-  });
+  if (langToggle) {
+    langToggle.addEventListener("click", () => {
+      setLang(html.lang === "pt" ? "en" : "pt");
+    });
+  }
 
-  themeToggle.addEventListener("click", () => {
-    const current = html.getAttribute("data-theme") || "dark";
-    setTheme(current === "dark" ? "light" : "dark");
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const current = html.getAttribute("data-theme") || "dark";
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+  }
 
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 

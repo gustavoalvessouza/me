@@ -379,8 +379,22 @@ img {
   transition: border-color 0.2s ease;
 }
 
+.project-card--link {
+  display: block;
+  color: inherit;
+}
+
 .project-card:hover {
   border-color: color-mix(in srgb, var(--ink) 22%, var(--line));
+}
+
+.project-card-arrow {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-card--link:hover .project-card-arrow {
+  color: var(--ink);
 }
 
 .project-media {
@@ -456,6 +470,111 @@ img {
   border: 1px solid var(--line);
   color: var(--muted);
   background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+}
+
+/* Project detail */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.back-link:hover {
+  color: var(--ink);
+}
+
+.project-detail-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-detail-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-detail-brand img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.project-detail-head h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.project-detail-head h1 a {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+.project-detail-head h1 a:hover {
+  color: var(--ink);
+}
+
+.project-detail-role {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-detail-lead {
+  margin: 1.5rem 0 0;
+  max-width: 40rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+}
+
+.project-detail-body {
+  margin-top: 1.25rem;
+  max-width: 42rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.project-detail-body p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.shot-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.shot {
+  margin: 0;
+}
+
+.shot img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.shot figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 /* Experience — keep the card style the user liked */
